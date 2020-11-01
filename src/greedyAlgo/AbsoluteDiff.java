@@ -6,20 +6,13 @@ import java.util.*;
 public class AbsoluteDiff {
     // Complete the minimumAbsoluteDifference function below.
     static int minimumAbsoluteDifference(int[] arr) {
-        List<Integer> minDiff  = new ArrayList<>();
+        Arrays.sort(arr);
+        int min  = Integer.MAX_VALUE;
         for (int i = 0; i < arr.length-1; i++) {
-            for (int j = i+1; j < arr.length; j++) {
-                int diff  = Math.abs(arr[i]-arr[j]);
-                minDiff.add(diff);
+            min  = Math.min(min,     Math.abs(arr[i]-arr[i+1]));
+         }
 
-
-            }
-
-
-        }
-        Collections.sort(minDiff);
-
-return minDiff.get(0);
+return min;
     }
 
     private static final Scanner scanner = new Scanner(System.in);
