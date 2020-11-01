@@ -10,21 +10,18 @@ public class IceCreamPalor {
     static void whatFlavors(int[] cost, int money) {
         HashMap<Integer,Integer>  visited  = new HashMap<>();
         for (int i = 0; i < cost.length; i++) {
-                visited.put(cost[i], i + 1);
+            if (cost[i]<money){
 
+                if (visited.containsKey(money-cost[i])){
+                    System.out.println((visited.get(money - cost[i])+1) + " " + (i+1));
+                    return;
 
-        }
-Arrays.sort(cost);
-
-        for (int i = 0; i < cost.length-1; i++) {
-
-            if (cost[Math.max(0,i-1)]+cost[i+1]==money){
-
-                    System.out.println(visited.get(Math.max(0,cost[i-1]))+","+visited.get(cost[i+1]));
+                }else {
+                    if (!visited.containsKey(cost[i]))
+                        visited.put(cost[i],i);
                 }
-
+            }
         }
-
 
     }
 
